@@ -2,9 +2,7 @@ import "dotenv/config";
 import Anthropic from "@anthropic-ai/sdk";
 import { tools, runTool, type ToolInput } from "./tools/index.js";
 
-const MODEL = "claude-opus-5";
-
-export async function askClaude(prompt: string): Promise<string> {
+export async function agent(prompt: string): Promise<string> {
   const client = new Anthropic({
     baseURL: process.env["BASE_URL"],
     apiKey: process.env["API_KEY"],
@@ -15,7 +13,7 @@ export async function askClaude(prompt: string): Promise<string> {
 
   for (let iteration = 0; iteration < 20; iteration += 1) {
     const response = await client.messages.create({
-      model: MODEL,
+      model: "claude-sonnet-5",
       max_tokens: 1024,
       tools,
       messages,
@@ -59,9 +57,4 @@ export async function askClaude(prompt: string): Promise<string> {
   throw new Error("Claude exceeded the maximum number of tool-use iterations");
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
-  const prompt =
-    process.argv.slice(2).join(" ") ||
-    "What is (12 + <the value inside the Magic Box>) * 3";
-  console.log(await askClaude(prompt));
-}
+console.log(await agent("What is (12 + <the value inside the Magic Box>) * 3"));

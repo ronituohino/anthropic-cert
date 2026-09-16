@@ -10,10 +10,7 @@
   "type": "module",
   "main": "index.ts",
   "scripts": {
-    "x": "tsx src/index.ts",
-    "dev": "tsx --watch src/index.ts",
-    "build": "tsc",
-    "start": "node dist/index.js"
+    "loop": "tsx src/loop/index.ts"
   },
   "devDependencies": {
     "@types/node": "^22.20.2",
