@@ -10,6 +10,7 @@
   "type": "module",
   "main": "index.ts",
   "scripts": {
+    "review": "tsx src/code-review/index.ts",
     "loop": "tsx src/loop/index.ts",
     "subagents": "tsx src/subagents/index.ts"
   },
