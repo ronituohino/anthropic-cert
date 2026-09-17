@@ -4,8 +4,8 @@ import { tools, runTool, type ToolInput } from "./tools/index.js";
 
 export async function agent(prompt: string): Promise<string> {
   const client = new Anthropic({
-    baseURL: process.env["BASE_URL"],
-    apiKey: process.env["API_KEY"],
+    baseURL: process.env["ANTHROPIC_BASE_URL"],
+    apiKey: process.env["ANTHROPIC_API_KEY"],
   });
   const messages: Anthropic.MessageParam[] = [
     { role: "user", content: prompt },
