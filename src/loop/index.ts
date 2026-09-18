@@ -17,6 +17,7 @@ export async function agent(prompt: string): Promise<string> {
       max_tokens: 1024,
       tools,
       messages,
+      tool_choice: { type: "auto" },
     });
 
     messages.push({ role: "assistant", content: response.content });
